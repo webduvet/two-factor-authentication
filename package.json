@@ -1,0 +1,10 @@
+{
+	"name":"auth server",
+	"version":"0.0.1",
+	"description":"Minimalist sample of two factor authentication server build on socket and node.js \nTwo allow for aditional steps requireing atomic operation on the backend",
+	"dependencies":{
+		"socket.io":"latest",
+		"mime":"latest",
+		"cli-color":"latest"
+	}
+}
