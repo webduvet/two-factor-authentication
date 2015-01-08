@@ -5,6 +5,7 @@
 	"dependencies":{
 		"socket.io":"latest",
 		"mime":"latest",
-		"cli-color":"latest"
+		"cli-color":"latest",
+		"winston":"latest"
 	}
 }
