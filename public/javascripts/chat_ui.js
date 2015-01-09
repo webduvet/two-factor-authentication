@@ -91,15 +91,21 @@ $(document).ready(function(){
 	});
 
 	$('#phone-form').submit(function(){
-		authApp.submitPhone();
+		var val = $('#phone-number').val();
+		authApp.submitPhone(val);
+		return false;
 	});
 
 	$('#pin-form').submit(function(){
-		authApp.submitPin();
+		var val = $('#pin-number').val();
+		authApp.submitPin(val);
+		return false;
 	});
 
 	$('#name-form').submit(function(){
-		authApp.submitName();
+		var val = $('#name-text').val();
+		authApp.submitName(val);
+		return false;
 	});
 });
 
@@ -107,18 +113,18 @@ function createSocket(){
 
 	var socket = io.connect();
 
-	socket.on('numberResult',function(res){
-		var newElement = $('<div></div>').text(res.text);
+	socket.on('phoneResult',function(res){
+		var newElement = $('<div></div>').text("server got this number: " + res.phone);
 		$('#status').append(newElement);
 		$('#status').scrollTop($('#status').prop('scrollHeight'));
 	});
 	socket.on('pinResult', function(res){
-		var newElement = $('<div></div>').text(res.text);
+		var newElement = $('<div></div>').text("server got this pin: "+res.pin);
 		$('#status').append(newElement);
 		$('#status').scrollTop($('#status').prop('scrollHeight'));
 	});
 	socket.on('nameResult', function(res){
-		var newElement = $('<div></div>').text(res.text);
+		var newElement = $('<div></div>').text("server got this name: "+ res.name);
 		$('#status').append(newElement);
 		$('#status').scrollTop($('#status').prop('scrollHeight'));
 	});

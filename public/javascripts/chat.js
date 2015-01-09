@@ -19,13 +19,14 @@ Auth.prototype.openSocket = function(socket, handlers){
 	this.socket = socket;
 }
 
-Auth.prototype.enterPhone = function(phone){
+Auth.prototype.submitPhone = function(phone){
+	console.log("submitting phone number", phone);
 	this.socket.emit('phone', {phone: phone});
 }
-Auth.prototype.enterPin = function(pin){
+Auth.prototype.submitPin = function(pin){
 	this.socket.emit('pin', {pin:pin});
 }
-Auth.prototype.enterName = function(name){
+Auth.prototype.submitName = function(name){
 	this.socket.emit('name', {name:name});
 }
 
