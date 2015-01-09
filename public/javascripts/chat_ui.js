@@ -85,9 +85,12 @@ $(document).ready(function(){
 	var authApp = new Auth();
 
 	$('#open-socket').click(function(){
-		var socket = createSocket();
-		authApp.openSocket(socket);
-		console.log("content of socket", socket);
+		if(!authApp.socket){
+			var socket = createSocket();
+			authApp.openSocket(socket);
+		} else {
+			displayErr("socket already created");
+		}
 	});
 
 	$('#phone-form').submit(function(){
@@ -107,6 +110,12 @@ $(document).ready(function(){
 		authApp.submitName(val);
 		return false;
 	});
+
+	function displayErr(msg){
+		var newElement = $('<div></div>').text(msg);
+		$('#status').append(newElement);
+		$('#status').scrollTop($('#status').prop('scrollHeight'));
+	}
 });
 
 function createSocket(){

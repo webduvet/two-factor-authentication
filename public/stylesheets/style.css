@@ -63,6 +63,7 @@ color: #00B7FF;
 }
 
 #status {
+  overflow: auto;
 	background-color: black;
 	width: 50%;
 	color: #0F0;
