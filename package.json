@@ -1,10 +1,12 @@
 {
-	"name":"auth server",
+	"name":"two-factor-authentication",
 	"version":"0.0.1",
 	"description":"Minimalist sample of two factor authentication server build on socket and node.js \nTwo allow for aditional steps requireing atomic operation on the backend",
 	"dependencies":{
 		"socket.io":"latest",
 		"mime":"latest",
-		"cli-color":"latest"
+		"cli-color":"latest",
+		"firebase":"latest",
+		"firebase-token-generator":"latest"
 	}
 }
