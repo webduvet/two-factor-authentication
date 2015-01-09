@@ -8,5 +8,6 @@
 		"cli-color":"latest",
 		"firebase":"latest",
 		"firebase-token-generator":"latest"
+		"winston":"latest"
 	}
 }
