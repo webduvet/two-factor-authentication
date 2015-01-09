@@ -52,6 +52,6 @@ server.listen(3001, function(){
 	console.log(clc.green("server listening on port 3001"));
 });
 
-var chatServer = require('./lib/chat_server.js');
+var chatServer = require('./lib/auth_server.js');
 chatServer.listen(server);
 

@@ -45,3 +45,29 @@ color: #00B7FF;
 #help {
   font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+
+#test-content{
+	max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#steps {
+	width: 50%;
+  background-color: #eee;
+  height: 300px;
+	display: inline-block;
+}
+
+#steps > div {
+	padding: 5px;
+}
+
+#status {
+	background-color: black;
+	width: 50%;
+	color: green:
+	font: courier;
+	font-size: 10px;
+  height: 300px;
+  float: right;
+}

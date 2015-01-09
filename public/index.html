@@ -5,28 +5,48 @@
 	<link rel='stylesheet' href='/stylesheets/style.css'></link>
 </head>
 <body>
-	<h3>Chat app</h3>
+	<h3>Two factor auth test</h3>
 	<br />
 	<hr />
 	<br />
-	<div id='content'>
-		<div id='room'></div>
-		<div id='room-list'></div>
-		<div id='messages'></div>
-		<form id='send-form'>
-			<input id='send-message' />
-			<input id='send-button' type='submit' value='Send'/>
-			<div id='help'>
-				Chat commands:
-				<ul>
-					<li>Change nickname: <code>/nick [username]</code></li>
-					<li>Join/create room: <code>/join [room name]</code></li>
-				</ul>
-			</div>
-		</form>
+	<div id='test-content'>
+		<div id="steps"><div>
+
+			<button id="open-socket">open socket</button>
+			<form id='number-form'>
+				<p>enter number</p>
+				<input id='number-number' />
+				<input id='number-button' type='submit' value='Send'/>
+			</form>
+			<form id='pin-form'>
+				<p>enter PIN</p>
+				<input id='pin-number' />
+				<input id='pin-button' type='submit' value='Send'/>
+			</form>
+			<form id='name-form'>
+				<p>enter name</p>
+				<input id='name-text' />
+				<input id='name-button' type='submit' value='Send'/>
+			</form>
+
+		</div></div>
+		<div id="status">
+		</div>
 	</div>
+
+	<div id='help'>
+		User flow:
+		<ul>
+			<li>First open the socket</li>
+			<li>enter mobile nuber in format (country code operator prefix number): <code>+CcOp1234567</code></li>
+			<li>enter test pin <code>1234</code></li>
+			<li>enter name - this is the last step</li>
+			<li>in status window we should see new user</li>
+		</ul>
+	</div>
+
 <script src='/socket.io/socket.io.js' type='text/javascript'></script>
-<script src='http://code.jquery.com/jquery-1.8.0.min.js'
+<script src='http://code.jquery.com/jquery-2.1.0.min.js'
 type='text/javascript'></script>
 <script src='/javascripts/chat.js' type='text/javascript'></script>
 <script src='/javascripts/chat_ui.js' type='text/javascript'></script>
