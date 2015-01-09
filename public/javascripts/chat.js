@@ -1,8 +1,7 @@
-var Chat = function(socket){
-	this.socket = socket;
+var Auth = function(){
 };
 
-Chat.prototype.sendMessage = function(room, text){
+Auth.prototype.sendMessage = function(room, text){
 	var message = {
 		room: room,
 		text: text
@@ -10,13 +9,27 @@ Chat.prototype.sendMessage = function(room, text){
 	this.socket.emit('message', message);
 };
 
-Chat.prototype.changeRoom = function(room) {
+Auth.prototype.changeRoom = function(room) {
 	this.socket.emit('join', {
 		newRoom: room
 	});
 }
 
-Chat.prototype.processCommand = function(cmd){
+Auth.prototype.openSocket = function(socket, handlers){
+	this.socket = socket;
+}
+
+Auth.prototype.enterPhone = function(phone){
+	this.socket.emit('phone', {phone: phone});
+}
+Auth.prototype.enterPin = function(pin){
+	this.socket.emit('pin', {pin:pin});
+}
+Auth.prototype.enterName = function(name){
+	this.socket.emit('name', {name:name});
+}
+
+Auth.prototype.processCommand = function(cmd){
 	var words = cmd.split(' ');
 	var command = words[0]
 		.substring(1, words[0].length)

@@ -24,10 +24,10 @@ function processUserInput(chatApp, socket) {
 	$('#send-message').val('');
 }
 
-
+/*
 var socket = io.connect();
 $(document).ready(function(){
-	var chatApp = new Chat(socket);
+	var chatApp = new Auth(socket);
 
 	socket.on('nameResult', function(result) {
 		var message;
@@ -79,3 +79,54 @@ $(document).ready(function(){
 		return false;
 	});
 });
+*/
+
+$(document).ready(function(){
+	var authApp = new Auth();
+
+	$('#open-socket').click(function(){
+		var socket = createSocket();
+		authApp.openSocket(socket);
+		console.log("content of socket", socket);
+	});
+
+	$('#phone-form').submit(function(){
+		authApp.submitPhone();
+	});
+
+	$('#pin-form').submit(function(){
+		authApp.submitPin();
+	});
+
+	$('#name-form').submit(function(){
+		authApp.submitName();
+	});
+});
+
+function createSocket(){
+
+	var socket = io.connect();
+
+	socket.on('numberResult',function(res){
+		var newElement = $('<div></div>').text(res.text);
+		$('#status').append(newElement);
+		$('#status').scrollTop($('#status').prop('scrollHeight'));
+	});
+	socket.on('pinResult', function(res){
+		var newElement = $('<div></div>').text(res.text);
+		$('#status').append(newElement);
+		$('#status').scrollTop($('#status').prop('scrollHeight'));
+	});
+	socket.on('nameResult', function(res){
+		var newElement = $('<div></div>').text(res.text);
+		$('#status').append(newElement);
+		$('#status').scrollTop($('#status').prop('scrollHeight'));
+	});
+	socket.on('socket-opened', function(res){
+		var newElement = $('<div></div>').text(res.text);
+		$('#status').append(newElement);
+		$('#status').scrollTop($('#status').prop('scrollHeight'));
+	});
+
+	return socket;
+}
