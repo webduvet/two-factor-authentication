@@ -7,7 +7,7 @@
 		"mime":"latest",
 		"cli-color":"latest",
 		"firebase":"latest",
-		"firebase-token-generator":"latest"
+		"firebase-token-generator":"latest",
 		"winston":"latest"
 	}
 }
