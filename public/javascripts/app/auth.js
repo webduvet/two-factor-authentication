@@ -48,6 +48,7 @@ Auth.prototype.fbAuthenticate = function(){
 			tabula.writeError(error);
 		} else {
 			tabula.write("authentication object:" + authData);
+			console.log(authData);
 		}
 
 	})
