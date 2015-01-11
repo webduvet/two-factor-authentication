@@ -81,6 +81,8 @@ $(document).ready(function(){
 });
 */
 
+var tabula = new Tabula(document.getElementById('tabula'));
+
 $(document).ready(function(){
 	var authApp = new Auth();
 
@@ -89,7 +91,7 @@ $(document).ready(function(){
 			var socket = createSocket(authApp);
 			authApp.openSocket(socket);
 		} else {
-			displayErr("socket already created");
+			tabula.writeError("socket already created");
 		}
 	});
 	
@@ -121,11 +123,6 @@ $(document).ready(function(){
 		return false;
 	});
 
-	function displayErr(msg){
-		var newElement = $('<div></div>').text(msg);
-		$('#status').append(newElement);
-		$('#status').scrollTop($('#status').prop('scrollHeight'));
-	}
 });
 
 function createSocket(authApp){
@@ -133,30 +130,20 @@ function createSocket(authApp){
 	var socket = io.connect();
 
 	socket.on('phoneResult',function(res){
-		var newElement = $('<div></div>').text("server got this number: " + res.phone);
-		$('#status').append(newElement);
-		$('#status').scrollTop($('#status').prop('scrollHeight'));
+		tabula.write("this phone: " + res.phone);
 	});
 	socket.on('pinResult', function(res){
-		var newElement = $('<div></div>').text("server got this pin: "+res.pin);
-		$('#status').append(newElement);
-		$('#status').scrollTop($('#status').prop('scrollHeight'));
+		tabula.write("server got this pin: "+res.pin);
 	});
 	socket.on('nameResult', function(res){
-		var newElement = $('<div></div>').text("server got this name: "+ res.name);
-		$('#status').append(newElement);
-		$('#status').scrollTop($('#status').prop('scrollHeight'));
+		tabula.write("server got this name: "+ res.name);
 	});
 	socket.on('socket-opened', function(res){
-		var newElement = $('<div></div>').text(res.text);
-		$('#status').append(newElement);
-		$('#status').scrollTop($('#status').prop('scrollHeight'));
+		tabula.write(res.text);
 	});
 	socket.on('jwtGenerated', function(res){
 		authApp.jwt = res;
-		var newElement = $('<div></div>').text("jwt was generated and sent to client "+res);
-		$('#status').append(newElement);
-		$('#status').scrollTop($('#status').prop('scrollHeight'));
+		tabula.write("jwt generated: "+res);
 	});
 
 	return socket;
