@@ -84,7 +84,7 @@ $(document).ready(function(){
 var tabula = new Tabula(document.getElementById('tabula'));
 
 $(document).ready(function(){
-	var authApp = new Auth();
+	var authApp = new Auth(new Firebase("http://sagavera.firebaseio.com"));
 
 	$('#open-socket').click(function(){
 		if(!authApp.socket){

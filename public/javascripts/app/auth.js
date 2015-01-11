@@ -1,5 +1,6 @@
-var Auth = function(){
+var Auth = function(ref){
 	this.jwt = false;
+	this.ref = ref;
 };
 
 Auth.prototype.sendMessage = function(room, text){
@@ -41,9 +42,13 @@ Auth.prototype.generateJwt = function(){
 	*/
 }
 // client action client needs to be authenticated with FB
-Auth.prototype.fbAuthenticate = function(ref){
-	ref.authWithCustomToken(this.jwt, function(error, authData){
-
+Auth.prototype.fbAuthenticate = function(){
+	this.ref.authWithCustomToken(this.jwt, function(error, authData){
+		if (error) {
+			tabula.writeError(error);
+		} else {
+			tabula.write("authentication object:" + authData);
+		}
 
 	})
 	//this.socket.emit('authWithJwt', {jwt: this.jwt});
