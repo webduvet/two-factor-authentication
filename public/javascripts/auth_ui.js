@@ -86,7 +86,7 @@ $(document).ready(function(){
 
 	$('#open-socket').click(function(){
 		if(!authApp.socket){
-			var socket = createSocket();
+			var socket = createSocket(authApp);
 			authApp.openSocket(socket);
 		} else {
 			displayErr("socket already created");
@@ -95,6 +95,11 @@ $(document).ready(function(){
 	
 	$('#generate-jwt').click(function(){
 		authApp.generateJwt();
+		return false;
+	});
+
+	$('#fb-authenticate').click(function(){
+		authApp.fbAuthenticate();
 		return false;
 	});
 
@@ -123,7 +128,7 @@ $(document).ready(function(){
 	}
 });
 
-function createSocket(){
+function createSocket(authApp){
 
 	var socket = io.connect();
 
@@ -144,6 +149,12 @@ function createSocket(){
 	});
 	socket.on('socket-opened', function(res){
 		var newElement = $('<div></div>').text(res.text);
+		$('#status').append(newElement);
+		$('#status').scrollTop($('#status').prop('scrollHeight'));
+	});
+	socket.on('jwtGenerated', function(res){
+		authApp.jwt = res;
+		var newElement = $('<div></div>').text("jwt was generated and sent to client");
 		$('#status').append(newElement);
 		$('#status').scrollTop($('#status').prop('scrollHeight'));
 	});

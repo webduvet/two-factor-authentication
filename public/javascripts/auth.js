@@ -1,4 +1,5 @@
 var Auth = function(){
+	this.jwt = false;
 };
 
 Auth.prototype.sendMessage = function(room, text){
@@ -31,6 +32,9 @@ Auth.prototype.submitName = function(name){
 }
 Auth.prototype.generateJwt = function(){
 	this.socket.emit('jwt');
+}
+Auth.prototype.fbAuthenticaten = function(){
+	this.socket.emit('jwtAuth', {jwt: this.jwt});
 }
 
 Auth.prototype.processCommand = function(cmd){
