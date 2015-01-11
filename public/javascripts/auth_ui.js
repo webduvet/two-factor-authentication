@@ -92,6 +92,11 @@ $(document).ready(function(){
 			displayErr("socket already created");
 		}
 	});
+	
+	$('#generate-jwt').click(function(){
+		authApp.generateJwt();
+		return false;
+	});
 
 	$('#phone-form').submit(function(){
 		var val = $('#phone-number').val();

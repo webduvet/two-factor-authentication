@@ -29,6 +29,9 @@ Auth.prototype.submitPin = function(pin){
 Auth.prototype.submitName = function(name){
 	this.socket.emit('name', {name:name});
 }
+Auth.prototype.generateJwt = function(){
+	this.socket.emit('jwt');
+}
 
 Auth.prototype.processCommand = function(cmd){
 	var words = cmd.split(' ');
