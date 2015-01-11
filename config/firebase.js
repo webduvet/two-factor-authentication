@@ -1,4 +1,4 @@
-exports = {
-	ref = "https://sagavera.firebaseio.com",
-	securityToken: "enter token here"
+module.exports = {
+	url: "https://sagavera.firebaseio.com",
+	securityToken: "PuLQAqgElkbjEXWOThu53XElfsdD5BrKZbGtnkIC"
 }

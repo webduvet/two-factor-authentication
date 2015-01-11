@@ -31,10 +31,22 @@ Auth.prototype.submitName = function(name){
 	this.socket.emit('name', {name:name});
 }
 Auth.prototype.generateJwt = function(){
+	console.log("emitting jwt");
 	this.socket.emit('jwt');
+	/*
+	this.socket.emit('jwt', {
+		name: name, 
+		phone: phone
+	});
+	*/
 }
-Auth.prototype.fbAuthenticaten = function(){
-	this.socket.emit('jwtAuth', {jwt: this.jwt});
+// client action client needs to be authenticated with FB
+Auth.prototype.fbAuthenticate = function(ref){
+	ref.authWithCustomToken(this.jwt, function(error, authData){
+
+
+	})
+	//this.socket.emit('authWithJwt', {jwt: this.jwt});
 }
 
 Auth.prototype.processCommand = function(cmd){

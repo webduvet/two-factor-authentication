@@ -154,7 +154,7 @@ function createSocket(authApp){
 	});
 	socket.on('jwtGenerated', function(res){
 		authApp.jwt = res;
-		var newElement = $('<div></div>').text("jwt was generated and sent to client");
+		var newElement = $('<div></div>').text("jwt was generated and sent to client "+res);
 		$('#status').append(newElement);
 		$('#status').scrollTop($('#status').prop('scrollHeight'));
 	});
