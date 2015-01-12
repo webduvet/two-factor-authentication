@@ -16,25 +16,29 @@
 		<div id="steps"><div>
 
 			<button id="open-socket">open socket</button>
+			<br/>
+			<br/>
 			<form id='phone-form'>
-				<p>enter phone</p>
+				<div>enter phone</div>
 				<input id='phone-number' />
-				<input id='phone-button' type='submit' value='Send'/>
+				<input id='phone-button' type='submit' value='Request pin to validate'/>
 			</form>
+			<br/>
 			<form id='pin-form'>
-				<p>enter PIN</p>
+				<div>enter PIN</small></div>
 				<input id='pin-number' />
-				<input id='pin-button' type='submit' value='Send'/>
+				<input id='pin-button' type='submit' value='confirn with PIN'/>
 			</form>
+			<br/>
 			<form id='name-form'>
-				<p>enter name</p>
+				<div>enter name</small></div>
 				<input id='name-text' />
-				<input id='name-button' type='submit' value='Send'/>
+				<input id='name-button' type='submit' value='Submit Name'/>
 			</form>
 			<br/>
-			<button id="generate-jwt">generate JWT</button>
+			<h2 id="user-name"></h2>
 			<br/>
-			<button id="fb-authenticate">authenticate with FB</button>
+			<button id="fb-authenticate" disabled>authenticate with FB</button><br/><small>only if we have user account</small>
 
 		</div></div>
 		<div id="status">
@@ -47,9 +51,10 @@
 		<ul>
 			<li>First open the socket</li>
 			<li>enter mobile nuber in format (country code operator prefix number): <code>+CcOp1234567</code></li>
-			<li>enter test pin <code>1234</code></li>
-			<li>enter name - this is the last step</li>
-			<li>in status window we should see new user</li>
+			<li>backend validates the number and sends PIN over SMS, enter the pin <code>1234</code></li>
+			<li>if the user already has this number we get the name and send JWT to authenticate with firebase</li>
+			<li>otherwise we ask for the name</li>
+			<li>New user is registered and JWT is sent to him</li>
 		</ul>
 	</div>
 

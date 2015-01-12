@@ -23,13 +23,13 @@ Auth.prototype.openSocket = function(socket, handlers){
 
 Auth.prototype.submitPhone = function(phone){
 	console.log("submitting phone number", phone);
-	this.socket.emit('phone', {phone: phone});
+	this.socket.emit('phoneEntered', {phone: phone});
 }
 Auth.prototype.submitPin = function(pin){
-	this.socket.emit('pin', {pin:pin});
+	this.socket.emit('pinEntered', {pin:pin});
 }
 Auth.prototype.submitName = function(name){
-	this.socket.emit('name', {name:name});
+	this.socket.emit('nameEntered', {name:name});
 }
 Auth.prototype.generateJwt = function(){
 	console.log("emitting jwt");

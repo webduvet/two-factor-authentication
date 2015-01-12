@@ -141,7 +141,12 @@ function createSocket(authApp){
 	});
 	socket.on('disconnect', function(res){
 		tabula.write(res + " ... closing connection");
-		io.disconnect();
+		socket.disconnect();
+	});
+	socket.on('numberDiscovered', function(res){
+		tabula.write('discovered '+res.name);
+		// TODO enable authenticate button
+		// disable enter name 
 	});
 
 	return socket;
