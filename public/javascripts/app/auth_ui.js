@@ -80,6 +80,21 @@ function createSocket(authApp){
 		tabula.write("jwt generated: "+res);
 		var but = document.getElementById('fb-authenticate');
 		but.removeAttribute('disabled');
+		if(res.existing) {
+			authApp.ref.child('users/'+res.uid)
+				.once('value', function(ss){
+					// it must be here but 
+					// just to be sure
+					var usr = ss.val();
+					if(usr){
+						console.log(usr.object.name);
+						var nameField = document.getElementById('name-text');
+						nameField.value = usr.object.name;
+					} else {
+						tabula.writeError("some error occured");
+					}
+				});
+		}
 	});
 	socket.on('nameRequest', function(res){
 		var field = document.getElementById('name-text'),
