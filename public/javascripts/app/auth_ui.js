@@ -132,12 +132,6 @@ function createSocket(authApp){
 	socket.on('phoneResult',function(res){
 		tabula.write("this phone: " + res.phone);
 	});
-	socket.on('pinResult', function(res){
-		tabula.write("server got this pin: "+res.pin);
-	});
-	socket.on('nameResult', function(res){
-		tabula.write("server got this name: "+ res.name);
-	});
 	socket.on('socket-opened', function(res){
 		tabula.write(res.text);
 	});
