@@ -31,16 +31,6 @@ Auth.prototype.submitPin = function(pin){
 Auth.prototype.submitName = function(name){
 	this.socket.emit('nameEntered', {name:name});
 }
-Auth.prototype.generateJwt = function(){
-	console.log("emitting jwt");
-	this.socket.emit('jwt');
-	/*
-	this.socket.emit('jwt', {
-		name: name, 
-		phone: phone
-	});
-	*/
-}
 // client action client needs to be authenticated with FB
 Auth.prototype.fbAuthenticate = function(){
 	this.ref.authWithCustomToken(this.jwt, function(error, authData){

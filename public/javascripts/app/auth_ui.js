@@ -24,62 +24,6 @@ function processUserInput(chatApp, socket) {
 	$('#send-message').val('');
 }
 
-/*
-var socket = io.connect();
-$(document).ready(function(){
-	var chatApp = new Auth(socket);
-
-	socket.on('nameResult', function(result) {
-		var message;
-
-		if (result.success) {
-			message = 'You are now known as ' + result.name + '.';
-		} else {
-			message = result.message;
-		}
-		$('#messages').append(divSystemContentElement(message));
-	});
-
-	socket.on('joinResult', function(result){
-		$('#room').text(result.room);
-		$('#messages').append(divSystemContentElement('Room Changed'));
-		$('#messages').scrollTop($('#messages').prop('scrollHeight'));
-	});
-
-	socket.on('message', function(message){
-		var newElement = $('<div></div>').text(message.text);
-		$('#messages').append(newElement);
-		$('#messages').scrollTop($('#messages').prop('scrollHeight'));
-	});
-
-	socket.on('rooms', function(rooms){
-		$('#room-list').empty();
-
-		for(var room in rooms) {
-			room = room.substring(0, room.length);
-			if (room != '') {
-				$('#room-list').append(divEscapeContentElement(room));
-			}
-		}
-
-		$('#room-list div').click(function() {
-			chatApp.processCommand('/join ' + $(this).text());
-			$('#send-message').focus();
-		});
-	});
-
-	setInterval(function(){
-		socket.emit('rooms');
-	}, 1000);
-
-	$('#send-message').focus();
-
-	$('#send-form').submit(function(){
-		processUserInput(chatApp, socket);
-		return false;
-	});
-});
-*/
 
 var tabula = new Tabula(document.getElementById('tabula'));
 
@@ -95,10 +39,6 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('#generate-jwt').click(function(){
-		authApp.generateJwt();
-		return false;
-	});
 
 	$('#fb-authenticate').click(function(){
 		authApp.fbAuthenticate();
@@ -136,17 +76,14 @@ function createSocket(authApp){
 		tabula.write(res.text);
 	});
 	socket.on('jwtGenerated', function(res){
-		authApp.jwt = res;
+		authApp.jwt = res.jwt;
 		tabula.write("jwt generated: "+res);
+		var but = document.getElementById('fb-authenticate');
+		but.removeAttribute('disabled');
 	});
 	socket.on('disconnect', function(res){
 		tabula.write(res + " ... closing connection");
 		socket.disconnect();
-	});
-	socket.on('numberDiscovered', function(res){
-		tabula.write('discovered '+res.name);
-		// TODO enable authenticate button
-		// disable enter name 
 	});
 
 	return socket;
