@@ -145,6 +145,10 @@ function createSocket(authApp){
 		authApp.jwt = res;
 		tabula.write("jwt generated: "+res);
 	});
+	socket.on('disconnect', function(res){
+		tabula.write(res + " ... closing connection");
+		io.disconnect();
+	});
 
 	return socket;
 }
