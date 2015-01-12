@@ -81,6 +81,12 @@ function createSocket(authApp){
 		var but = document.getElementById('fb-authenticate');
 		but.removeAttribute('disabled');
 	});
+	socket.on('nameRequest', function(res){
+		var field = document.getElementById('name-text'),
+				but = document.getElementById('name-button');
+		field.removeAttribute('disabled');
+		but.removeAttribute('disabled');
+	});
 	socket.on('disconnect', function(res){
 		tabula.write(res + " ... closing connection");
 		socket.disconnect();
