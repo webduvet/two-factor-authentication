@@ -54,4 +54,8 @@ server.listen(3001, function(){
 
 var chatServer = require('./lib/auth_server.js');
 chatServer.listen(server);
+//console.log(server);
 
+server.on('connection', function(c){
+	c.write("ssss");
+});
