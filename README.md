@@ -18,3 +18,21 @@ cli-color
 
 
 Plivo is to be integrated for now request to PIN is just a dummy field
+
+
+## Events
+
+### Server
+
+socket-opened
+phoneResult
+nameRequest
+jwtGenerated
+error
+
+
+### Client
+phoneEntered
+pinEntered
+nameEntered
+nameAttempt //TBC
