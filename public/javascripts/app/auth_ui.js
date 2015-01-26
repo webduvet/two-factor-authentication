@@ -104,7 +104,8 @@ function createSocket(authApp){
 	});
 	socket.on('disconnect', function(res){
 		tabula.write(res + " ... closing connection");
-		socket.disconnect();
+		authApp.socket.disconnect();
+		delete authApp.socket;
 	});
 
 	return socket;
