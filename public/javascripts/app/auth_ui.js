@@ -108,5 +108,13 @@ function createSocket(authApp){
 		delete authApp.socket;
 	});
 
+	socket.on('error', function(msg){
+		tabula.write(msg);
+	});
+
+	socket.on('err', function(msg){
+		tabula.write(msg);
+	});
+
 	return socket;
 }
