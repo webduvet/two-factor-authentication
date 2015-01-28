@@ -1,8 +1,10 @@
-var fs = require('fs'),
+var 
+		fs = require('fs'),
 		path = require('path'),
 		mime = require('mime'),
 		cache = {},
-		clc = require('cli-color');
+		clc = require('cli-color'),
+		http = require('http');
 
 function send404(res){
 	res.writeHead(404, {'Content-Type':'text/plain'});
@@ -36,7 +38,7 @@ function serveStatic(res, cache, absPath) {
 	}
 }
 
-var server = require('http').createServer(function(req, res){
+var server = http.createServer(function(req, res){
 	var filePath = false;
 
 	if(req.url=='/') {
@@ -52,10 +54,7 @@ server.listen(3001, function(){
 	console.log(clc.green("server listening on port 3001"));
 });
 
-var chatServer = require('./lib/auth_server.js');
-chatServer.listen(server);
+var authServer = require('./lib/auth_server.js');
+authServer.listen(server);
 //console.log(server);
 
-server.on('connection', function(c){
-	c.write("ssss");
-});

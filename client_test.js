@@ -15,6 +15,10 @@ client.on('disconnect', function(){
 	console.log('disconnected');
 });
 
+client.on('error', function(err){
+	console.log('error', err);
+});
+
 /*
 socket.connect(3002,'localhost', function(s){
 	console.log('listening',s);
