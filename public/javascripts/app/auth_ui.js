@@ -70,10 +70,10 @@ function createSocket(authApp){
 	var socket = io.connect();
 
 	socket.on('phoneResult',function(res){
-		tabula.write("this phone: " + res.phone);
+		tabula.write("phone sent to get SMS");
 	});
-	socket.on('socket-opened', function(res){
-		tabula.write(res.text);
+	socket.on('connect', function(res){
+		tabula.write('connected');
 	});
 	socket.on('jwtGenerated', function(res){
 		authApp.jwt = res.jwt;
