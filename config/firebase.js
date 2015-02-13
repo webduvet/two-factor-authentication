@@ -1,4 +1,4 @@
 module.exports = {
-	url: "https://sagavera.firebaseio.com",
-	securityToken: "PuLQAqgElkbjEXWOThu53XElfsdD5BrKZbGtnkIC"
+	url: "https://jibbr2dev.firebaseio.com",
+	securityToken: "ItXqUA4yRgXk3osPBMkzt1y0BdjRIQt9huvhBLCM"
 }
