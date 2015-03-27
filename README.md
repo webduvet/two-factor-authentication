@@ -20,6 +20,12 @@ cli-color
 Plivo is to be integrated for now request to PIN is just a dummy field
 
 
+TODO update this Docs
+
+make some dewcent build script
+make this a boilerplate - ATM it is more of a sample app
+
+
 ## Events
 
 ### Server
