@@ -1,4 +1,4 @@
 module.exports = {
-	url: "https://jibbr_production.firebaseio.com",
+	url: "https://jibbrproduction.firebaseio.com",
 	securityToken: "uVBRpCvgLeLGMutbjJRElDbXCVBhxHcRxIUGHnS9"
 }
