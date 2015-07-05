@@ -50,8 +50,8 @@ var server = http.createServer(function(req, res){
 	serveStatic(res, cache, absPath);
 });
 
-server.listen(3001, function(){
-	console.log(clc.green("server listening on port 3001"));
+server.listen(8004, function(){
+	console.log(clc.green("server listening on port 8004"));
 });
 
 var authServer = require('./lib/auth_server.js');

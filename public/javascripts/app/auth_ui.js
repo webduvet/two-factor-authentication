@@ -28,7 +28,7 @@ function processUserInput(chatApp, socket) {
 var tabula = new Tabula(document.getElementById('tabula'));
 
 $(document).ready(function(){
-	var authApp = new Auth(new Firebase("http://sagavera.firebaseio.com"));
+	var authApp = new Auth(new Firebase("https://jibbr2dev.firebaseio.com"));
 
 	$('#open-socket').click(function(){
 		if(!authApp.socket){

@@ -1,5 +1,5 @@
 module.exports = {
-	url: "sms.jibbrapp.com",
-	protocol: 'https://',
-	port: 80
+	url: "localhost",
+	protocol: 'http://',
+	port: 8081
 }
